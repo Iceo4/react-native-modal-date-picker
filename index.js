@@ -23,7 +23,10 @@ export default class DateTimePicker extends Component {
     }
   }
   componentWillReceiveProps (nextProps) {
-    if(nextProps.changeData && nextProps.changeData !== this.props.changeData) {
+    if(nextProps.defaultData!==this.props.defaultData){
+      this.setState({nowDate:moment(nextProps.defaultData).format('YYYY-MM-DD')});
+    }
+    else if(nextProps.changeData && nextProps.changeData !== this.props.changeData) {
       this.setState({nowDate:nextProps.changeData.format('YYYY-MM-DD')})
     }
   }
